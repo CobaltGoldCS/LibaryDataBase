@@ -1,4 +1,5 @@
 import sqlite3
+import time
 conn = sqlite3.connect('lib_database')
 cursor = conn.cursor()
 #Only works if your database is empty, otherwise throws up an error message, which is pretty annoying
@@ -48,3 +49,4 @@ def main():
     else:
         print("Error")
         main()
+main()
