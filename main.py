@@ -1,5 +1,6 @@
 import sqlite3
-
+""" TO DO list
+- Update command to change number of copies in the database, which includes checking in and out books"""
 conn = sqlite3.connect('lib_database')
 cursor = conn.cursor()
 #cursor.execute('''CREATE TABLE Library (Bookname text, Auth text, Genre text, Location text, Quantity tinyint)''')
