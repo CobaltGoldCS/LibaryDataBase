@@ -3,7 +3,6 @@ import sqlite3
 conn = sqlite3.connect('lib_database')
 cursor = conn.cursor()
 #cursor.execute('''CREATE TABLE Library (Bookname text, Auth text, Genre text, Location text, Quantity tinyint)''')
-cursor.execute('DELETE FROM Library')
 def main():
     """Where all magic happens folks"""
     choice = input("Add (1), find (2)?: ")
@@ -13,12 +12,7 @@ def main():
         addGenre = input("Genre of the book: ")
         addLocation = input("Where is this book found?: ")
         addQuantity = input("How many copies of this book do you have?: ")
-        exeBook = addBook + ", "
-        exeLN = addLN + ", "
-        exeGenre = addGenre + ", "
-        exeLocation = addLocation + ", "
-        exeQuantity = addQuantity + ", "
-        addTuple = [(exeBook), (exeLN), (addGenre), (exeLocation), (exeQuantity)]
+        addTuple = [(addBook), (addLN), (addGenre), (addLocation), (addQuantity)]
         cursor.execute('''INSERT INTO Library (Bookname, Auth, Genre, Location, Quantity) VALUES (?,?,?,?,?)''', addTuple,)
         conn.commit()
         print("Done, thank you")
@@ -29,22 +23,19 @@ def main():
         choice2 = input("Last name(1), Book name(2), Genre(3), or all(4): ")
         if choice2 == "1":
             addLN = input("Author's last name: ")
-            exeLN = addLN + ", "
-            cursor.execute('SELECT * FROM Library WHERE Auth=?', (exeLN,))
+            cursor.execute('SELECT * FROM Library WHERE Auth=?', (addLN,))
             rows = cursor.fetchall()
             for row in rows:
                 print(rows)
         if choice2 == "2":
             addBook = input("Bookname: ")
-            exeBook = addBook + ", "
-            cursor.execute('SELECT * FROM Library WHERE Bookname=?', (exeBook,))
+            cursor.execute('SELECT * FROM Library WHERE Bookname=?', (addBook,))
             rows = cursor.fetchall()
             for row in rows:
                 print(rows)
         if choice2 == "3":
             addGenre = input("Genre of the book: ")
-            exeGenre = addGenre + ", "
-            cursor.execute('SELECT * FROM Library WHERE Genre=?', (exeGenre,))
+            cursor.execute('SELECT * FROM Library WHERE Genre=?', (addGenre,))
             rows = cursor.fetchall()
             for row in rows:
                 print(rows)
