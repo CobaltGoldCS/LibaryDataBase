@@ -1,3 +1,3 @@
 # LibaryDataBase
-Library database for my school\n
+Library database for my school.
 The editor used was repl.it
