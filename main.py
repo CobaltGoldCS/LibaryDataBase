@@ -2,7 +2,7 @@ import sqlite3
 
 conn = sqlite3.connect('lib_database')
 cursor = conn.cursor()
-
+#cursor.execute('''CREATE TABLE Library (Bookname text, Auth text, Genre text, Location text, Quantity tinyint)''')
 
 def main():
     """Where all magic happens folks"""
@@ -13,27 +13,38 @@ def main():
         addGenre = input("Genre of the book: ")
         addLocation = input("Where is this book found?: ")
         addQuantity = input("How many copies of this book do you have?: ")
-        addTuple = [(addBook, addLN, addGenre, addLocation, addQuantity)]
-        cursor.executemany('INSERT INTO Library VALUES (?,?,?,?,?)', addTuple)
+        exeBook = addBook + ", "
+        exeLN = addLN + ", "
+        exeGenre = addGenre + ", "
+        exeLocation = addLocation + ", "
+        exeQuantity = addQuantity + ", "
+        addTuple = [(exeBook), (exeLN), (addGenre), (exeLocation), (exeQuantity)]
+        cursor.execute('''INSERT INTO Library (Bookname, Auth, Genre, Location, Quantity) VALUES (?,?,?,?,?)''', addTuple,)
+        conn.commit()
+        print("Done, thank you")
+        conn.close()
     # Still needs to use print to show the obtained information
     elif choice == "2":
         print("How do you want to search?\n")
-        choice2 = input("Last name(1), Book name(2), Genre(3), or all: ")
+        choice2 = input("Last name(1), Book name(2), Genre(3), or all(4): ")
         if choice2 == "1":
-            useAuth = input("Author's last name: ")
-            cursor.execute('SELECT * FROM Library WHERE symbol=?', (useAuth,))
+            addLN = input("Author's last name: ")
+            exeLN = addLN + ", "
+            cursor.execute('SELECT * FROM Library WHERE Auth=?', (exeLN,))
             rows = cursor.fetchall()
             for row in rows:
                 print(rows)
         if choice2 == "2":
-            useBook = input("Book name: ")
-            cursor.execute('SELECT * FROM Library WHERE symbol=?', (useBook,))
+            addBook = input("Bookname: ")
+            exeBook = addBook + ", "
+            cursor.execute('SELECT * FROM Library WHERE Bookname=?', (exeBook,))
             rows = cursor.fetchall()
             for row in rows:
                 print(rows)
         if choice2 == "3":
-            useGenre = input("Genre: ")
-            cursor.execute('SELECT * FROM Library WHERE symbol=?', (useGenre,))
+            addGenre = input("Genre of the book: ")
+            exeGenre = addGenre + ", "
+            cursor.execute('SELECT * FROM Library WHERE Genre=?', (exeGenre,))
             rows = cursor.fetchall()
             for row in rows:
                 print(rows)
@@ -42,9 +53,6 @@ def main():
             rows = cursor.fetchall()
             for row in rows:
                 print(rows)
-        else:
-            print("Error")
-            main()
     else:
         print("Error")
         main()
