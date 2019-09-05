@@ -3,7 +3,7 @@ import sqlite3
 conn = sqlite3.connect('lib_database')
 cursor = conn.cursor()
 #cursor.execute('''CREATE TABLE Library (Bookname text, Auth text, Genre text, Location text, Quantity tinyint)''')
-
+cursor.execute('DELETE FROM Library')
 def main():
     """Where all magic happens folks"""
     choice = input("Add (1), find (2)?: ")
@@ -48,11 +48,20 @@ def main():
             rows = cursor.fetchall()
             for row in rows:
                 print(rows)
-        if choice == "4":
+        if choice2 == "4":
             cursor.execute('SELECT * FROM Library')
             rows = cursor.fetchall()
             for row in rows:
                 print(rows)
+    # This deletes a book you search for with Bookname
+    elif choice ==  "3":
+      delete = input("Which book do you want to delete?: ")
+      cursor.execute("DELETE FROM Library WHERE Bookname=?", (delete,))
+      conn.commit()
+      print(delete, "deleted, thank you.")
+      conn.close()
+
+
     else:
         print("Error")
         main()
