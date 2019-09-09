@@ -32,13 +32,13 @@ class functionallity():
 
 
 
-#Defines the container for the GUI
+#--------------------------------------------Defines the container for the GUI-----------------------------------------------------
 container = tkinter.Tk()
 container.title('AAI Library')
-#Menubar
+#--------------Menubar
 menuBar = tkinter.Menu(container)
 #menuBar.add_cascade(Label="Search", command=)
-
+#--------------------------------------------------------Defining the widgets--------------------------------------------------------
 bookFrame = tkinter.Frame(container)
 bookFrame.grid(column = 2)
 bookFrame.pack()
@@ -53,7 +53,7 @@ LNEntry = tkinter.Entry(bookFrame)
 genreEntry = tkinter.Entry(bookFrame)
 locationEntry = tkinter.Entry(bookFrame)
 quantityEntry = tkinter.Entry(bookFrame)
-
+#---------------------------------------------Defining locations for all of the widgets----------------------------------------------
 
 LabelBook.grid(row=1)
 LabelLN.grid(row=2)
