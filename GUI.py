@@ -26,6 +26,8 @@ class menu():
     container.title("AAI Library")
     mainFrame = tkinter.Frame(container)
     mainFrame.grid(column = 3)
+    addMenuButton = tkinter.button(mainFrame, command=menu.addMenu(self),text= "Add a book")
+    addMenuButton.grid(row=1, column=1)
   def addMenu(self):
     #--------------------------------------------Defines the container for the GUI-----------------------------------------------------
     container = tkinter.Tk()
