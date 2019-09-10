@@ -14,7 +14,7 @@ class functionality():
     genre=genreEntry.get()
     LN = LNEntry.get()
     quantity = quantityEntry.get()
-    addTuple = [(str(name)), (str(LN)), (str(genre)), (str(location)), (str(quantity))]
+    addTuple = [(str(name)), (str(LN)), (str(genre)), (str(location)), (quantity)]
     cursor.execute('INSERT INTO Library VALUES (?,?,?,?,?)', addTuple)
     conn.commit()
 
