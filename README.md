@@ -1,5 +1,6 @@
 # LibaryDataBase
 Library database for my school.
 The editor used was **repl.it**
-Made in **python** with **tkinter and sqlite3**\n
+Made in **python** with **tkinter and sqlite3**  return
+
 ***RUN GUI.py for this to work***
