@@ -5,7 +5,8 @@ from sqlite3 import connect, Cursor
 """
 TO DO list
 - Beautify the GUI
-- PREPARE FOR THE .XML FILE from LIBRARY to integrate into database
+- Reformat all code to use proper syntax for classes to get rid of partial
+- Use cwd() to make code runnable on different computers OR put it in installation instructions
 
 """
 conn = connect('lib_database')
