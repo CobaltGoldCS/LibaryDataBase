@@ -47,11 +47,11 @@ def main():
                 print(rows)
     # This deletes a book you search for with Bookname
     elif choice ==  "3":
-      delete = input("Which book do you want to delete?: ")
-      cursor.execute("DELETE FROM Library WHERE Bookname=?", (delete,))
-      conn.commit()
-      print(delete, "deleted, thank you.")
-      conn.close()
+    delete = input("Which book do you want to delete?: ")
+    cursor.execute("DELETE FROM Library WHERE Bookname=?", (delete,))
+    conn.commit()
+    print(delete, "deleted, thank you.")
+    conn.close()
 
 
     else:
